@@ -13,9 +13,9 @@ jobs:
       uses: actions/cache@v2
       with:
           path: node_modules
-          key: modules-${{ hashFiles('package-lock.json') }}
+          key: modules-${{ hashFiles('yarn.lock') }}
           store-keys: |
-            modules-${{ hashFiles('package-lock.json') }}
+            modules-${{ hashFiles('yarn.lock') }}
             modules-
             
     - name: install
