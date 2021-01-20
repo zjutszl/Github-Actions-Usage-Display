@@ -7,9 +7,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - run: npm i
-      - run: npm test
+    - uses: actions/checkout@v2
+    - name: cache node_modules
+      id: node_modules_cache_id
+      uses: actions/cache@v2
+      with:
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+          store-keys: |
+            modules-${{ hashFiles('package-lock.json') }}
+            modules-
+            
+    - name: install
+      if: steps.node_modules_cache_id.outputs.cache-hit != 'true'
+      run: npm ci
+
+    - name: test
+      run: npm run test
