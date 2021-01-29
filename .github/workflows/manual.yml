@@ -10,4 +10,6 @@ jobs:
       - name: RUn my action
         id: custom_action
         uses: zjutszl/repo-permission-check@v0.1.0-alpha.0
-      - run: echo ${{ steps.custom_action.outputs.authorized }}
+      - name: print
+        if: ${{ steps.custom_action.outputs.authorized }} == 'true'
+        run: echo success
