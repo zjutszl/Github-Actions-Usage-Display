@@ -11,5 +11,5 @@ jobs:
         id: custom_action
         uses: zjutszl/repo-permission-check@v0.1.0-alpha.0
       - name: print
-        if: steps.custom_action.outputs.authorized != 'true'
+        if: steps.custom_action.outputs.authorized == 'true'
         run: echo success
