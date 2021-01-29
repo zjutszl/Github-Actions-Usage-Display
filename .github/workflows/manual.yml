@@ -1,9 +1,13 @@
 name: manual test
 on:
   workflow_dispatch:
+  push:
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo 'hello world'
+      - name: RUn my action
+        id: custom_action
+        uses: actions/repo-permission-check@v1
+      - run: echo ${{ steps.custom_action.outputs.authorized }}
