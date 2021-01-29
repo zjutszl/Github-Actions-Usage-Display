@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: RUn my action
         id: custom_action
-        uses: actions/repo-permission-check@v0.1.0-alpha.0
+        uses: zjutszl/repo-permission-check@v0.1.0-alpha.0
       - run: echo ${{ steps.custom_action.outputs.authorized }}
