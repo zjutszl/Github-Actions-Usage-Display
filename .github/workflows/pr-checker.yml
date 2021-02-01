@@ -15,7 +15,6 @@ jobs:
           permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: echo output
         if: steps.permission_check.outputs.pass == 'true'
         run: echo "check passed"
