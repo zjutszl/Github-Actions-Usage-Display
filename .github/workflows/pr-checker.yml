@@ -1,4 +1,4 @@
-name: refuse modify specific files
+name: pr-checker
 on: [push, pull_request_target]
 jobs:
   main:
@@ -6,21 +6,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v5.4
-        id: changed_files
+        uses: zjutszl/repo-permission-check@v0.1.0-alpha.1
+        id: permission_check
         with:
           files: |
             .*\.ya?ml$
-      - name: check permission when files change
-        id: permission_check
-        if: steps.changed_files.outputs.files_changed == 'true'
-        uses: "lannonbr/repo-permission-check-action@2.0.0"
-        with:
-         permission: "write"
+          role: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: echo output
-        run: echo ${{ steps.permission_check.outputs.pass == 'true' }}
+        if: steps.permission_check.outputs.pass == 'true'
+        run: echo "check passed"
       - uses: superbrothers/close-pull-request@v3
         if: steps.permission_check.output.pass == 'true'
         with:
