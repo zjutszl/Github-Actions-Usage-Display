@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Verify Changed files
-        uses: zjutszl/repo-permission-check@v0.1.0-alpha.5
+        uses: zjutszl/repo-permission-check@v0.1.0-alpha.6
         id: permission_check
         with:
           files: |
