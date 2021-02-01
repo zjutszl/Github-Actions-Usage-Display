@@ -10,7 +10,7 @@ jobs:
         id: changed_files
         with:
           files: |
-             .(yaml|yml)$
+             .github/workflow/.(yaml|yml)
       - name: check permission when files change.
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: "lannonbr/repo-permission-check-action@2.0.0"
