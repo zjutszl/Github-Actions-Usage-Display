@@ -11,11 +11,13 @@ jobs:
         with:
           files: |
              .(yaml|yml)$
+
       - name: check permission when files change.
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: "lannonbr/repo-permission-check-action@2.0.0"
         with:
          permission: "write"
+
       - uses: superbrothers/close-pull-request@v3
         with:
           # Optional. Post a issue comment just before closing a pull request.
