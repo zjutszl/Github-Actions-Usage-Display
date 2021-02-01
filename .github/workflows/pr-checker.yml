@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v5.4
         id: changed_files
@@ -12,6 +13,7 @@ jobs:
           files: |
              .(yaml)$
              .(yml)$
+
       - name: check permission when files change.
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: "lannonbr/repo-permission-check-action@2.0.0"
@@ -19,6 +21,7 @@ jobs:
          permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: superbrothers/close-pull-request@v3
         with:
           # Optional. Post a issue comment just before closing a pull request.
