@@ -10,7 +10,8 @@ jobs:
         id: permission_check
         with:
           files: |
-            .*\.ya?ml$
+            ya?ml$
+            workflows
           permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
