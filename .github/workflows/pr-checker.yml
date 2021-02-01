@@ -11,12 +11,16 @@ jobs:
         with:
           files: |
              .github/workflow/.(yaml|yml)
-      - name: check permission when files change.
+      - name: check permission when files change
+        id: permission_check
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: "lannonbr/repo-permission-check-action@2.0.0"
         with:
          permission: "write"
+      - name: echo output
+        run: echo ${{ steps.permission_check.output.pass == 'true' }}
       - uses: superbrothers/close-pull-request@v3
+        if: steps.permission_check.output.pass == 'true'
         with:
           # Optional. Post a issue comment just before closing a pull request.
           comment: "We do not accept PR which would changes our workflows. "
