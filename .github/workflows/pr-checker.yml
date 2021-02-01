@@ -18,7 +18,7 @@ jobs:
         with:
          permission: "write"
       - name: echo output
-        run: echo ${{ steps.permission_check.output.pass == 'true' }}
+        run: echo ${{ steps.permission_check.outputs.pass == 'true' }}
       - uses: superbrothers/close-pull-request@v3
         if: steps.permission_check.output.pass == 'true'
         with:
