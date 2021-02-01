@@ -1,5 +1,5 @@
 name: refuse modify specific files
-on: [pull_request]
+on: [pull_request_target]
 jobs:
   main:
     runs-on: ubuntu-latest
