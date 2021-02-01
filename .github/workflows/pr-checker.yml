@@ -11,7 +11,7 @@ jobs:
         with:
           files: |
             .*\.ya?ml$
-          role: "write"
+          permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: echo output
