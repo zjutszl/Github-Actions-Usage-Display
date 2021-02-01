@@ -1,0 +1,27 @@
+name: refuse modify specific files
+on: [pull_request]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v5.4
+        id: changed_files
+        with:
+          files: |
+             .(yaml)$
+             .(yml)$
+      - name: check permission when files change.
+        if: steps.changed_files.outputs.files_changed == 'true'
+        uses: "lannonbr/repo-permission-check-action@2.0.0"
+        with:
+         permission: "write"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: superbrothers/close-pull-request@v3
+        with:
+          # Optional. Post a issue comment just before closing a pull request.
+          comment: "We do not accept PR which would changes our workflows. "
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
