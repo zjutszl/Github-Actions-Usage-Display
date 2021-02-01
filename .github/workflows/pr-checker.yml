@@ -15,11 +15,8 @@ jobs:
           permission: "write"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: echo output
-        if: steps.permission_check.outputs.pass == 'true'
-        run: echo "check passed"
       - uses: superbrothers/close-pull-request@v3
-        if: steps.permission_check.output.pass == 'true'
+        if: steps.permission_check.output.pass != 'true'
         with:
           # Optional. Post a issue comment just before closing a pull request.
           comment: "We do not accept PR which would changes our workflows. "
