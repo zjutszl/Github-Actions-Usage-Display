@@ -10,7 +10,7 @@ jobs:
         id: changed_files
         with:
           files: |
-             .github/workflow/.(yaml|yml)
+             .github/workflow/
       - name: check permission when files change
         id: permission_check
         if: steps.changed_files.outputs.files_changed == 'true'
