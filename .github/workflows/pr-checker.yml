@@ -1,4 +1,4 @@
-name: refuse modify specific files
+name: pr-checker
 on: [pull_request]
 jobs:
   main:
