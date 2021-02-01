@@ -9,7 +9,7 @@ jobs:
         uses: tj-actions/verify-changed-files@v5.4
         id: changed_files
         with:
-          files: workflow
+          files: .github/workflows/pr-checker.yml
       - name: check permission when files change
         id: permission_check
         if: steps.changed_files.outputs.files_changed == 'true'
