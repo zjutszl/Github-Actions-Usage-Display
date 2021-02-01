@@ -16,6 +16,8 @@ jobs:
         uses: "lannonbr/repo-permission-check-action@2.0.0"
         with:
          permission: "write"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: echo output
         run: echo ${{ steps.permission_check.outputs.pass == 'true' }}
       - uses: superbrothers/close-pull-request@v3
