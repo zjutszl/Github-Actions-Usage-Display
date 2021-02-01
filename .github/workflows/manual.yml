@@ -2,6 +2,7 @@ name: manual test
 on:
   workflow_dispatch:
   push:
+    branches: 
 jobs:
   job1:
     runs-on: ubuntu-latest
