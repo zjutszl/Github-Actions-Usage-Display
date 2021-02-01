@@ -10,18 +10,13 @@ jobs:
         id: changed_files
         with:
           files: |
-             .(yaml)$
-             .(yml)$
+             .(yaml|yml)$
       - name: check permission when files change.
         if: steps.changed_files.outputs.files_changed == 'true'
         uses: "lannonbr/repo-permission-check-action@2.0.0"
         with:
          permission: "write"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: superbrothers/close-pull-request@v3
         with:
           # Optional. Post a issue comment just before closing a pull request.
           comment: "We do not accept PR which would changes our workflows. "
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
