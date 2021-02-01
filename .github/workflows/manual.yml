@@ -1,4 +1,5 @@
 name: manual test
+
 on:
   workflow_dispatch:
   push:
