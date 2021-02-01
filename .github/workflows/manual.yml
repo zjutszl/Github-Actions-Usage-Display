@@ -1,4 +1,4 @@
-name: manual test
+name: manual test 2222
 on:
   workflow_dispatch:
   push:
