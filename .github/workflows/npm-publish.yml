@@ -1,0 +1,9 @@
+name: test action
+on: [push]
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: zjutszl/my-cool-action
+      - run: echo "That\'s the end of this action"
