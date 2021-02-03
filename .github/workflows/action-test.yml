@@ -4,4 +4,4 @@ jobs:
   main:
     runs-on: windows-latest
     steps:
-      - uses: zjutszl/my-cool-action@v1.0.0-rc.1
+      - uses: zjutszl/my-cool-action@master
