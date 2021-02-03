@@ -1,5 +1,5 @@
 name: test action
-on: [push, pull_request, issue_comment]
+on: [pull_request, issue_comment]
 jobs:
   main:
     runs-on: ubuntu-latest
