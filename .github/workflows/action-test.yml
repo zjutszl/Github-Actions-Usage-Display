@@ -1,7 +1,6 @@
 name: test action
 on:
   issue_comment:
-    types: [created]
 jobs:
   main:
     runs-on: ubuntu-latest
